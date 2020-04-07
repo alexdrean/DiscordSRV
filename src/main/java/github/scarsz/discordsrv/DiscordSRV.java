@@ -129,7 +129,7 @@ public class DiscordSRV extends JavaPlugin implements Listener {
     private String consoleChannel;
 
     public static DiscordSRV getPlugin() {
-        return getPlugin(DiscordSRV.class);
+        return JavaPlugin.getPlugin(DiscordSRV.class);
     }
     public static DynamicConfig config() {
         return getPlugin().config;
