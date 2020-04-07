@@ -101,6 +101,7 @@ public class DiscordSRV extends JavaPlugin implements Listener {
     public static boolean isReady = false;
     public static boolean updateIsAvailable = false;
     public static String version = "";
+    private static DiscordSRV plugin;
 
     @Getter private AccountLinkManager accountLinkManager;
     @Getter private CancellationDetector<AsyncPlayerChatEvent> cancellationDetector = null;
@@ -129,7 +130,7 @@ public class DiscordSRV extends JavaPlugin implements Listener {
     private String consoleChannel;
 
     public static DiscordSRV getPlugin() {
-        return JavaPlugin.getPlugin(DiscordSRV.class);
+        return plugin;
     }
     public static DynamicConfig config() {
         return getPlugin().config;
@@ -264,6 +265,7 @@ public class DiscordSRV extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
+        plugin = this;
         ConfigUtil.migrate();
         DiscordSRV.debug("Language is " + config.getLanguage().getName());
 
